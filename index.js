@@ -192,10 +192,10 @@ app.get('/stocks/sort/pricing', (req, res) => {
 });
 
 //function
-function sortGrowth(stock1, stock2, growthRate) {
-  if (growthRate === 'high-to-low') {
+function sortGrowth(stock1, stock2, growth) {
+  if (growth === 'high-to-low') {
     return stock2.growth - stock1.growth;
-  } else if (growthRate === 'low-to-high') {
+  } else if (growth === 'low-to-high') {
     return stock1.growth - stock2.growth;
   } else {
     return 'Enter valid sorting type';
@@ -204,10 +204,10 @@ function sortGrowth(stock1, stock2, growthRate) {
 
 //Endpoint 2
 app.get('/stocks/sort/growth', (req, res) => {
-  let growthRate = req.query.growthRate;
+  let growth = req.query.growth;
   let stocksCopy = stocks.slice();
   let sortedStocks = stocksCopy.sort((stock1, stock2) =>
-    sortGrowth(stock1, stock2, growthRate)
+    sortGrowth(stock1, stock2, growth)
   );
   res.json({ stocks: sortedStocks });
 });
