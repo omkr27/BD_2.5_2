@@ -240,6 +240,11 @@ app.get('/stocks/filter/industry', (req, res) => {
   res.json({ stocks: sortedStocks });
 });
 
+//Endpoint 5
+app.get('/stocks', (req, res) => {
+  res.json({stocks: stocks})
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
